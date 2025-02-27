@@ -1,7 +1,7 @@
 export enum CellDirection {
-    Up,
-    Down,
-    Left,
-    Right,
-    None
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+    NONE
 }

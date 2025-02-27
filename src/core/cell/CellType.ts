@@ -1,7 +1,7 @@
 export enum CellType {
-    Empty,
-    Head,
-    Tail,
-    Normal,
-    Apple
+    EMPTY,
+    HEAD,
+    TAIL,
+    NORMAL,
+    APPLE
 }

@@ -10,17 +10,37 @@ const Grid: React.FC<GridProps> = (GridProps) => {
 
     const { gridData } = GridProps;
 
+    const getCellDirection = (cell: Cell) => {
+    //     UP,
+    // DOWN,
+    // LEFT,
+    // RIGHT,
+        switch (cell.getDirection()) {
+            case 0:
+                return '⬆️';
+            case 1:
+                return '⬇️';
+            case 2:
+                return '⬅️';
+            case 3:
+                return '➡️';
+            default:
+                return '';
+        }
+                
+    }
+
     const getCellContent = (cell: Cell) => {
         switch (cell.getType()) {
-            case CellType.Head:
+            case CellType.HEAD:
                 return '👾';
-            case CellType.Normal:
+            case CellType.NORMAL:
                 return '🧱';
-            case CellType.Tail:
+            case CellType.TAIL:
                 return '🏁';
-            case CellType.Apple:
+            case CellType.APPLE:
                 return '🍎'
-            case CellType.Empty:
+            case CellType.EMPTY:
             default:
                 return '';
         }
@@ -30,14 +50,10 @@ const Grid: React.FC<GridProps> = (GridProps) => {
         <div className="grid grid-cols-10 border border-red-700">
             {gridData.map((row, rowIndex) => (
                 row.map((cell, cellIndex) => (
-                    <div className="w-24 h-24 
-                                    bg-gray-300 
-                                    border border-solid border-black
-                                    text-4xl 
-                                    flex items-center justify-center
-                                    " 
+                    <div className="w-24 h-24 bg-gray-300 border border-solid border-black text-4xl flex items-center justify-center" 
                          key={rowIndex + "-"+ cellIndex}>
                         {getCellContent(cell)}
+                        {getCellDirection(cell)}
                     </div>
                 ))
             ))}

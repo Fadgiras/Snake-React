@@ -9,8 +9,8 @@ class Cell {
 
 
     constructor(type?: CellType, direction?: CellDirection, x?: number, y?: number) {
-        this.type = type || CellType.Empty;
-        this.direction = direction || CellDirection.None;
+        this.type = type || CellType.EMPTY;
+        this.direction = direction || CellDirection.NONE;
         this.x = x || 0;
         this.y = y || 0;
     }
@@ -21,6 +21,7 @@ class Cell {
 
     public setType(type: CellType) {
         this.type = type;
+        return this;
     }
 
     public getDirection() {
@@ -29,6 +30,7 @@ class Cell {
 
     public setDirection(direction: CellDirection) {
         this.direction = direction;
+        return this;
     }
 
     public getX() {
@@ -37,6 +39,7 @@ class Cell {
 
     public setX(x: number) {
         this.x = x;
+        return this;
     }
 
     public getY() {
@@ -45,30 +48,31 @@ class Cell {
 
     public setY(y: number) {
         this.y = y;
+        return this;
     }
 
     public isHead() {
-        return this.type === CellType.Head;
+        return this.type === CellType.HEAD;
     }
 
     public isTail() {
-        return this.type === CellType.Tail;
+        return this.type === CellType.TAIL;
     }
 
     public isNormal() {
-        return this.type === CellType.Normal;
+        return this.type === CellType.NORMAL;
     }
 
     public isEmpty() {
-        return this.type === CellType.Empty;
+        return this.type === CellType.EMPTY;
     }
 
     public isSnake() {
-        return this.type === CellType.Head || this.type === CellType.Tail || this.type === CellType.Normal;
+        return this.type === CellType.HEAD || this.type === CellType.TAIL || this.type === CellType.NORMAL;
     }
 
     public isApple() {
-        return this.type === CellType.Apple;
+        return this.type === CellType.APPLE;
     }
 
 
