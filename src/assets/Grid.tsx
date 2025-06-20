@@ -48,14 +48,20 @@ const Grid: React.FC<GridProps> = (GridProps) => {
 
     return (
         <div className="grid grid-cols-10 border border-red-700">
-            {gridData.map((row, rowIndex) => (
-                row.map((cell, cellIndex) => (
-                    <div className="w-24 h-24 bg-gray-300 border border-solid border-black text-4xl flex items-center justify-center" 
-                         key={rowIndex + "-"+ cellIndex}>
-                        {getCellContent(cell)}
-                        {getCellDirection(cell)}
-                    </div>
-                ))
+            {Array.from({ length: 10 }, (_, y) => (
+                Array.from({ length: 10 }, (_, x) => {
+                    const cell = gridData[x]?.[y];
+                    return (
+                        <div className="w-24 h-24 bg-gray-300 border border-solid border-black text-4xl flex items-center justify-center"
+                            key={y + "-" + x}>
+                            {cell && getCellContent(cell)}
+                            {cell && getCellDirection(cell)}
+                            {/* <p className="text-xs text-black">
+                                {cell ? `{ x:${cell.getX()}, y:${cell.getY()} }` : ''}
+                            </p> */}
+                        </div>
+                    );
+                })
             ))}
         </div>
     );

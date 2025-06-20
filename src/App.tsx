@@ -26,19 +26,50 @@ function App() {
 			[new Cell(CellType.EMPTY, CellDirection.NONE, 9, 0), new Cell(CellType.EMPTY, CellDirection.NONE, 9, 1), new Cell(CellType.EMPTY, CellDirection.NONE, 9, 2), new Cell(CellType.EMPTY, CellDirection.NONE, 9, 3), new Cell(CellType.EMPTY, CellDirection.NONE, 9, 4), new Cell(CellType.EMPTY, CellDirection.NONE, 9, 5), new Cell(CellType.EMPTY, CellDirection.NONE, 9, 6), new Cell(CellType.EMPTY, CellDirection.NONE, 9, 7), new Cell(CellType.EMPTY, CellDirection.NONE, 9, 8), new Cell(CellType.EMPTY, CellDirection.NONE, 9, 9)],
 		];
         
-        // setGridData(mockGridData2);
+        // // setGridData(mockGridData2);
 
-		// gameEngine.makeMove(gridData, gridData[1][3], gridData[4][7]);
-		for (let i = 0; i < 3; i++) {
-			setTimeout(() => {
-				console.log('testMove ' + i);
-				gameEngine.testMove();
-                setGridData([...gameEngine.getGridData()]);
-			}, i * 1000);
+		// // gameEngine.makeMove(gridData, gridData[1][3], gridData[4][7]);
+		// for (let i = 0; i < 3; i++) {
+		// 	setTimeout(() => {
+		// 		console.log('testMove ' + i);
+		// 		gameEngine.testMove();
+        //         setGridData([...gameEngine.getGridData()]);
+		// 	}, i * 1000);
+		// }
+		setGridData([...gameEngine.getGridData()]);
+		window.addEventListener('keydown', moveListener);
+		return () => {
+			window.removeEventListener('keydown', moveListener);
 		}
 		
-		
     }, []);
+
+	const moveListener = (event: KeyboardEvent) => {
+		console.log('moveListener');
+		if (event.key === 'ArrowUp') {
+			console.log('ArrowUp');
+			gameEngine.testMove(CellDirection.UP);
+		}
+		if (event.key === 'ArrowDown') {
+			console.log('ArrowDown');
+			gameEngine.testMove(CellDirection.DOWN);
+		}
+		if (event.key === 'ArrowLeft') {
+			console.log('ArrowLeft');
+			gameEngine.testMove(CellDirection.LEFT);
+		}
+		if (event.key === 'ArrowRight') {
+			console.log('ArrowRight');
+			gameEngine.testMove(CellDirection.RIGHT);
+		}
+		if (event.key === 'r') {
+			console.log('reset');
+			gameEngine.initializeGame();
+		}
+
+
+		setGridData([...gameEngine.getGridData()]);
+	}
 
 	
 
