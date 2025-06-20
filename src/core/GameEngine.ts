@@ -10,7 +10,6 @@ class GameEngine {
 
     headPosition = { x: 0, y: 0 };
     tailPosition = { x: 0, y: 0 };
-    applePosition = { x: 0, y: 0 };
     appleEaten = false;
     currentDirection = CellDirection.UP;
     gameGrid: Cell[][] = [];
@@ -18,7 +17,6 @@ class GameEngine {
     public initializeGame() {
         this.headPosition = { x: 6, y: 5 };
         this.tailPosition = { x: 6, y: 6 };
-        this.applePosition = { x: 1, y: 2 };
 
         this.appleEaten = false;
 
@@ -209,9 +207,7 @@ class GameEngine {
     }
 
     setApplePosition(applePosition: { x: number; y: number; }) {
-        this.gameGrid[this.applePosition.x][this.applePosition.y].setType(CellType.EMPTY);
         this.gameGrid[applePosition.x][applePosition.y].setType(CellType.APPLE);
-        this.applePosition = applePosition;
     }
 
     getDirectionReversed(direction: CellDirection) {
