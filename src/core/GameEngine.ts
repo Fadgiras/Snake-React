@@ -314,6 +314,14 @@ class GameEngine {
         return null;
     }
 
+    spawnApple() {
+        let applePosition = { x: Math.floor(Math.random() * 10), y: Math.floor(Math.random() * 10) };
+        while (this.isOutOfBounds(applePosition) || this.isBody(applePosition) || this.isTail(applePosition) || this.isHeadCell(this.gameGrid[applePosition.x][applePosition.y])) {
+            applePosition = { x: Math.floor(Math.random() * 10), y: Math.floor(Math.random() * 10) };
+        }
+        this.setApplePosition(applePosition);
+    }
+
 }
 
 export default GameEngine;

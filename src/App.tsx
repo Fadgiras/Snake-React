@@ -66,6 +66,10 @@ function App() {
 			console.log('reset');
 			gameEngine.initializeGame();
 		}
+		if (event.key === 'p') {
+			console.log('POMME');
+			gameEngine.spawnApple();
+		}
 
 
 		setGridData([...gameEngine.getGridData()]);
